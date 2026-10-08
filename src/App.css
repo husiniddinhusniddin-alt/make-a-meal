@@ -1,22 +1,20 @@
-﻿/* APP STYLING - SOLID GREEN/WHITE THEME */
+/* APP STYLING - COFFEE THEME */
 .app-container {
-  background: white;
-  border: 1px solid var(--border-color);
-  border-radius: 32px;
-  overflow: hidden;
-  box-shadow: 0 25px 50px rgba(20, 83, 45, 0.1);
+  background: transparent;
   display: flex;
   flex-direction: column;
   position: relative;
+  width: 100%;
 }
 
 /* Nav Tabs */
 .nav-tabs {
   display: flex;
-  background: white;
-  padding: 0.5rem;
-  gap: 0.5rem;
-  border-bottom: 1px solid var(--border-color);
+  background: transparent;
+  padding: 1.5rem 3rem;
+  justify-content: center;
+  gap: 2rem;
+  border-bottom: 1px dashed rgba(232, 195, 130, 0.2);
 }
 
 .nav-tab {
@@ -117,7 +115,7 @@
   font-size: 0.9rem;
   font-weight: 700;
   color: var(--primary-dark);
-  background: white;
+  background: transparent;
   padding: 0.5rem 1rem;
   border-radius: 100px;
   border: 1px solid var(--border-color);
@@ -131,7 +129,7 @@
 .phone-mockup {
   width: 220px;
   height: 440px;
-  background: white;
+  background: transparent;
   border: 12px solid var(--primary-dark);
   border-radius: 36px;
   box-shadow: 0 25px 50px rgba(20, 83, 45, 0.2);
@@ -176,7 +174,7 @@
 
 .phone-card {
   height: 60px;
-  background: white;
+  background: transparent;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   border: 1px solid var(--border-color);
@@ -202,7 +200,7 @@
   grid-template-columns: 280px 1fr 320px;
   padding: 2.5rem;
   gap: 2rem;
-  background: white;
+  background: transparent;
 }
 
 @media (max-width: 1024px) {
@@ -245,7 +243,7 @@
   gap: 1rem;
   padding: 1rem;
   border-radius: 16px;
-  background: white;
+  background: transparent;
   border: 1px solid var(--border-color);
   transition: all 0.3s ease;
 }
@@ -291,7 +289,7 @@
 }
 
 .ingredient-card {
-  background: white;
+  background: transparent;
   border: 1px solid var(--border-color);
   border-radius: 24px;
   padding: 1.5rem;
@@ -358,7 +356,7 @@
 
 .card-inputs input:focus {
   border-color: var(--primary-main);
-  background: white;
+  background: transparent;
   box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
 }
 
@@ -494,7 +492,7 @@
 }
 
 .f-icon {
-  background: white;
+  background: transparent;
   color: var(--primary-main);
   width: 36px; height: 36px;
   border-radius: 50%;
@@ -508,7 +506,7 @@
 .suggester-content {
   padding: 3rem;
   min-height: 500px;
-  background: white;
+  background: transparent;
 }
 
 .search-box {
@@ -520,7 +518,7 @@
 .search-input-wrapper {
   display: flex;
   align-items: center;
-  background: white;
+  background: transparent;
   border: 2px solid var(--border-color);
   border-radius: 100px;
   padding: 0.5rem 1.5rem;
@@ -553,7 +551,7 @@
 }
 
 .recipe-card-sugg {
-  background: white;
+  background: transparent;
   border: 1px solid var(--border-color);
   border-radius: 24px;
   padding: 1.5rem;
@@ -655,7 +653,7 @@
 }
 
 .partner-card {
-  background: white;
+  background: transparent;
   border: 1px solid var(--border-color);
   border-radius: 20px;
   padding: 1.5rem;
@@ -690,7 +688,7 @@
 }
 
 .chat-container {
-  background: white;
+  background: transparent;
   border-radius: 24px;
   border: 1px solid var(--border-color);
   max-width: 700px;
@@ -760,7 +758,7 @@
 
 .chat-input-area {
   padding: 1.5rem;
-  background: white;
+  background: transparent;
   border-top: 1px solid var(--border-color);
   display: flex;
   gap: 1rem;
@@ -813,7 +811,7 @@
 }
 
 .tutorial-card {
-  background: white;
+  background: transparent;
   border: 1px solid var(--border-color);
   border-radius: 24px;
   padding: 2rem;
@@ -828,7 +826,7 @@
 }
 
 .wizard-container {
-  background: white;
+  background: transparent;
   border: 1px solid var(--border-color);
   border-radius: 32px;
   padding: 3rem;
@@ -838,7 +836,7 @@
 }
 
 .btn-back {
-  background: white;
+  background: transparent;
   border: 1px solid var(--border-color);
   color: var(--text-gray);
   padding: 0.5rem 1rem;
@@ -941,7 +939,7 @@
 }
 
 .welcome-modal {
-  background: white;
+  background: transparent;
   border-radius: 32px;
   max-width: 800px;
   width: 100%;
@@ -1036,7 +1034,7 @@
 
 /* SHOPPING LIST STYLES */
 .shopping-container {
-  background: white;
+  background: transparent;
   border-radius: 24px;
   border: 1px solid var(--border-color);
   max-width: 700px;
@@ -1135,5 +1133,244 @@
 .shop-delete:hover {
   opacity: 1;
   transform: scale(1.1);
+}
+
+
+/* === PREMIUM COFFEE THEME OVERRIDES === */
+
+.app-container {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.header-nav {
+  display: flex !important;
+  justify-content: flex-end !important;
+  padding: 1rem 3rem !important;
+  background: transparent !important;
+}
+
+.language-selector {
+  background: rgba(232, 195, 130, 0.1) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: none !important;
+  color: var(--primary-main) !important;
+}
+
+.language-selector select {
+  color: var(--text-dark) !important;
+}
+.language-selector select option {
+  color: #000;
+}
+
+.nav-tabs {
+  background: transparent !important;
+  border-bottom: 1px dashed rgba(232, 195, 130, 0.2) !important;
+  padding: 1.5rem 3rem !important;
+  justify-content: center !important;
+  gap: 2rem !important;
+}
+
+.nav-tab {
+  flex: none !important;
+  background: transparent !important;
+  color: var(--text-gray) !important;
+  font-weight: 500 !important;
+  position: relative;
+}
+
+.nav-tab:hover {
+  background: transparent !important;
+  color: var(--text-dark) !important;
+}
+
+.nav-tab.active {
+  background: transparent !important;
+  color: var(--primary-main) !important;
+  box-shadow: none !important;
+}
+
+.nav-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary-main);
+}
+
+.top-banner {
+  background: transparent !important;
+  border-bottom: none !important;
+  padding: 4rem 3rem !important;
+}
+
+.logo-text {
+  color: var(--text-dark) !important;
+}
+.logo-icon {
+  background: transparent !important;
+  color: var(--primary-main) !important;
+}
+
+.banner-subtitle {
+  color: var(--primary-main);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.banner-text h1 {
+  color: var(--text-dark) !important;
+}
+
+.feature-pill {
+  background: var(--primary-main) !important;
+  color: #22120d !important;
+}
+
+.btn-order, .btn-welcome, .calc-btn {
+  background: var(--primary-main) !important;
+  color: #22120d !important;
+  box-shadow: 0 0 20px rgba(232, 195, 130, 0.4) !important;
+}
+
+.welcome-modal {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.w-header h2 {
+  color: var(--primary-main) !important;
+}
+
+.w-feature h4 {
+  color: var(--text-dark) !important;
+}
+
+.calc-card, .suggester-content, .stats-header, .shopping-container {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.calc-card h2, .stats-header h2, .shopping-container h2 {
+  color: var(--primary-main) !important;
+}
+
+input, select {
+  background: rgba(0,0,0,0.2) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-dark) !important;
+}
+
+input::placeholder {
+  color: rgba(255,255,255,0.4) !important;
+}
+
+.recipe-card {
+  background: rgba(0,0,0,0.2) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.rc-title {
+  color: var(--primary-main) !important;
+}
+
+.ai-response-card {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.ai-response-card h3, .ai-steps-container h4 {
+  color: var(--primary-main) !important;
+}
+
+.ai-response-card p, .ai-steps-container div {
+  color: var(--text-dark) !important;
+}
+
+
+.main-content, .ai-container, .learn-container, .partner-container {
+  background: transparent !important;
+}
+
+.ingredient-card {
+  background: transparent !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.ing-icon-wrapper {
+  background: var(--bg-surface) !important;
+}
+
+.pack-card {
+  background: var(--bg-surface) !important;
+}
+
+/* FORCE ALL CARDS TO DARK THEME */
+.recipe-card, .partner-card, .tutorial-card, .ai-response-card, .ai-steps-container > div, .shop-item, .chat-message {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-dark) !important;
+}
+
+.recipe-card h3, .tutorial-card h3, .partner-card .name {
+  color: var(--primary-main) !important;
+}
+
+.rc-desc, .tutorial-card p {
+  color: var(--text-gray) !important;
+}
+
+.rc-ing-pill {
+  background: rgba(0,0,0,0.3) !important;
+  color: var(--text-gray) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.sidebar-right {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.phone-mockup {
+  border-color: var(--bg-surface) !important;
+}
+
+.phone-notch {
+  background: var(--bg-surface) !important;
+}
+
+.phone-card {
+  background: var(--bg-surface) !important;
+  color: var(--text-dark) !important;
+}
+
+.stat-value {
+  color: var(--primary-main) !important;
+}
+
+.stat-label {
+  color: var(--text-gray) !important;
+}
+
+.phone-mockup {
+  border: 12px solid var(--primary-main) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 0 0 2px rgba(255,255,255,0.1) !important;
+  background: var(--bg-surface) !important;
+}
+
+.phone-notch {
+  background: var(--primary-main) !important;
+  border-bottom-left-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
 }
 

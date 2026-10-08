@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Caveat:wght@600&display=swap');
 
 :root {
-  --bg-surface: #ffffff;
+  --bg-surface: #3e261e;
   
-  --primary-dark: #1f1412; /* Espresso Brown */
-  --primary-main: #c67c33; /* Caramel Orange */
-  --primary-light: #ebd8c3; /* Latte Beige */
+  --primary-dark: #ffffff; /* White for main headers on dark bg */
+  --primary-main: #e8c382; /* Gold */
+  --primary-light: #f5dfb3;
   
   --accent-gold: #fbbf24;
   
-  --text-dark: #2a1c18;
-  --text-gray: #6b5c58;
+  --text-dark: #ffffff;
+  --text-gray: #d4c1b5;
   
-  --border-color: #e6dac8;
-  --glass-shadow: 0 15px 40px rgba(31, 20, 18, 0.08);
+  --border-color: rgba(232, 195, 130, 0.15);
+  --glass-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -24,8 +24,7 @@
 
 body {
   font-family: 'Outfit', sans-serif;
-  background-color: #faf6f0; /* Creamy background */
-  background-image: none; /* Removed the green dots */
+  background: radial-gradient(circle at center, #422922 0%, #24140f 100%);
   color: var(--text-dark);
   min-height: 100vh;
   display: flex;

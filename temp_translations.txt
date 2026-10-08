@@ -1,0 +1,258 @@
+﻿const translations = {
+  uz: {
+    nav: { calc: 'Kalkulyator', sug: 'Retsept qidiruv', ai: 'AI Yordamchi', learn: "O'rganamiz", partner: 'Sherik Topish', shop: 'Bozorlik' },
+    titles: {
+      calculator: "Taom Narxini Hisoblash",
+      suggester: "Boridan Pishiramiz",
+      ai: "Sun'iy Intelekt Yordamchisi",
+      learn: "Bosqichma-bosqich o'rganamiz",
+      partner: "Hamkorlikda pishiramiz",
+      shopping: "Bozorlik ro'yxati"
+    },
+    desc: {
+      calculator: "O'z mehnatingizni qadrlang. Aniq hisob — muvaffaqiyat garovi!",
+      suggester: "Uyda bor masalliqlarni yozing va qanday taomlar pishirish mumkinligini bilib oling.",
+      ai: "Taom nomini yozing va AI sizga qanday masalliqlar kerakligini darhol aytib beradi.",
+      learn: "Ovqat qilishni umuman bilmaysizmi? Muammo emas! Biz bilan qadam-ba-qadam pishirishni o'rganing.",
+      partner: "Boshqa pazandalar bilan bog'laning, maslahatlashing va birgalikda taom tayyorlang!",
+      shopping: "Hech narsa yoddan ko'tarilmasligi uchun do'konga borishdan oldin ro'yxat tuzing."
+    },
+    welcome: {
+      title: "{t.welcome.title}",
+      subtitle: "{t.welcome.subtitle}",
+      f1_t: "{t.welcome.f1_t}", f1_d: "{t.welcome.f1_d}",
+      f2_t: "{t.welcome.f2_t}", f2_d: "{t.welcome.f2_d}",
+      f3_t: "{t.welcome.f3_t}", f3_d: "{t.welcome.f3_d}",
+      f4_t: "{t.welcome.f4_t}", f4_d: "{t.welcome.f4_d}",
+      btn: "{t.welcome.btn}"
+    },
+    calc: {
+      title: "Kalkulyator",
+      ingName: "{t.calc.ingName}", ingPlaceholder: "{t.calc.ingPlaceholder}",
+      weight: "{t.calc.weight}",
+      price: "{t.calc.price}",
+      addBtn: "{t.calc.addBtn}",
+      pack: "{t.calc.pack}", packPlaceholder: "Masalan: 1500",
+      markup: "{t.calc.markup}", markupPlaceholder: "Masalan: 20",
+      saveBtn: "{t.calc.saveBtn}",
+      result: "{t.calc.result}",
+      historyTitle: "{t.calc.historyTitle}",
+      historyEmpty: "{t.calc.historyEmpty}"
+    },
+    sugg: {
+      title: "{t.sugg.title}",
+      desc: "{t.sugg.desc}",
+      placeholder: "{t.sugg.placeholder}",
+      emptyTitle: "{t.sugg.emptyTitle}",
+      emptyDesc: "{t.sugg.emptyDesc}"
+    },
+    ai: {
+      title: "{t.ai.title}",
+      desc: "{t.ai.desc}",
+      placeholder: "{t.ai.placeholder}",
+      btn: "So'rash",
+      loading: "{t.ai.loading}",
+      aiTitle: "{t.ai.aiTitle}",
+      stepsTitle: "{t.ai.stepsTitle}",
+      bottomText: "{t.ai.bottomText}",
+      toCalc: "{t.ai.toCalc}"
+    },
+    learn: {
+      title: "{t.learn.title}",
+      desc: "{t.learn.desc}",
+      btn: "{t.learn.btn}",
+      completed: "Tayyorlandi",
+      back: "{t.learn.back}",
+      finishBtn: "{t.learn.finishBtn}"
+    },
+    partner: {
+      title: "{t.partner.title}",
+      desc: "{t.partner.desc}",
+      chatTitle: "bilan suhbat",
+      placeholder: "{t.partner.placeholder}",
+      send: "{t.partner.send}"
+    },
+    shop: {
+      title: "{t.shop.title}",
+      desc: "{t.shop.desc}",
+      placeholder: "{t.shop.placeholder}",
+      addBtn: "{t.calc.addBtn}",
+      empty: "{t.shop.empty}"
+    },
+    footer: {
+      f1: "{t.footer.f1}", f2: "{t.footer.f2}", f3: "{t.footer.f3}",
+      text: "{t.footer.text}"
+    }
+  },
+  ru: {
+    nav: { calc: 'Калькулятор', sug: 'Поиск рецепта', ai: 'ИИ Помощник', learn: 'Обучение', partner: 'Напарники', shop: 'Покупки' },
+    titles: {
+      calculator: "Расчет стоимости блюда",
+      suggester: "Готовим из того, что есть",
+      ai: "ИИ Помощник по кухне",
+      learn: "Учимся готовить шаг за шагом",
+      partner: "Готовим вместе",
+      shopping: "Список покупок"
+    },
+    desc: {
+      calculator: "Цените свой труд. Точный расчет — залог успеха!",
+      suggester: "Напишите, что есть дома, и узнайте, какие блюда можно приготовить.",
+      ai: "Напишите название блюда, и ИИ сразу скажет, какие ингредиенты нужны.",
+      learn: "Совсем не умеете готовить? Не проблема! Учитесь готовить шаг за шагом вместе с нами.",
+      partner: "Связывайтесь с другими поварами, советуйтесь и готовьте вместе!",
+      shopping: "Составьте список перед походом в магазин, чтобы ничего не забыть."
+    },
+    welcome: {
+      title: "Добро пожаловать в проект!",
+      subtitle: "Как эта программа может помочь вам на кухне?",
+      f1_t: "Точный расчет", f1_d: "Точно рассчитайте себестоимость и прибыль.",
+      f2_t: "Готовим из того, что есть", f2_d: "Найдите блюда из ингредиентов дома.",
+      f3_t: "Обучение с нуля", f3_d: "Учитесь через мастер-классы.",
+      f4_t: "Найти напарника", f4_d: "Общайтесь с другими поварами.",
+      btn: "Понятно, начнем!"
+    },
+    calc: {
+      title: "Калькулятор",
+      ingName: "Название ингредиента", ingPlaceholder: "Например: Мясо",
+      weight: "Вес (г/мл)",
+      price: "Цена за 1 кг/литр (сум)",
+      addBtn: "Добавить",
+      pack: "Стоимость упаковки (сум)", packPlaceholder: "Например: 1500",
+      markup: "Наценка (%)", markupPlaceholder: "Например: 20",
+      saveBtn: "Сохранить",
+      result: "Рекомендуемая цена за порцию:",
+      historyTitle: "Сохраненное меню",
+      historyEmpty: "Меню пока не сохранено."
+    },
+    sugg: {
+      title: "Какие продукты есть дома?",
+      desc: "Напишите название продукта (например: мясо, мука) и найдите подходящие блюда.",
+      placeholder: "Поиск ингредиентов...",
+      emptyTitle: "К сожалению, блюдо с таким ингредиентом не найдено",
+      emptyDesc: "Попробуйте ввести другой ингредиент"
+    },
+    ai: {
+      title: "Напишите ИИ помощнику",
+      desc: "Какое блюдо хотите приготовить? Напишите название или ингредиенты.",
+      placeholder: "Например: Дайте мне рецепт диетического блюда из курицы...",
+      btn: "Спросить",
+      loading: "ИИ думает...",
+      aiTitle: "Ответ ИИ",
+      stepsTitle: "Этапы приготовления:",
+      bottomText: "Узнали ингредиенты, теперь рассчитайте цену!",
+      toCalc: "Перейти к калькулятору"
+    },
+    learn: {
+      title: "Специальные мастер-классы для вас",
+      desc: "Выберите блюдо, которое хотите приготовить, и начнем процесс.",
+      btn: "Начать обучение",
+      completed: "Готово",
+      back: "Вернуться назад",
+      finishBtn: "Я приготовил!"
+    },
+    partner: {
+      title: "Напарники по кухне",
+      desc: "Готовить вместе веселее! С кем хотите пообщаться?",
+      chatTitle: "беседа с",
+      placeholder: "Напишите ваше сообщение...",
+      send: "Отправить"
+    },
+    shop: {
+      title: "Мои покупки",
+      desc: "Не забудьте нужные продукты при походе на рынок!",
+      placeholder: "Напишите название нового продукта...",
+      addBtn: "Добавить",
+      empty: "Список пуст. Добавить что-нибудь?"
+    },
+    footer: {
+      f1: "В вашем городе", f2: "В каждом блюде есть любовь", f3: "Хорошая еда - счастливый день!",
+      text: "Ваш вкусовой друг!"
+    }
+  },
+  en: {
+    nav: { calc: 'Calculator', sug: 'Recipe Search', ai: 'AI Assistant', learn: 'Learning', partner: 'Find Partner', shop: 'Shopping' },
+    titles: {
+      calculator: "Calculate Dish Cost",
+      suggester: "Cook with What You Have",
+      ai: "AI Kitchen Assistant",
+      learn: "Step-by-Step Learning",
+      partner: "Cook Together",
+      shopping: "Shopping List"
+    },
+    desc: {
+      calculator: "Value your work. Accurate calculation is the key to success!",
+      suggester: "Write down what ingredients you have at home to see what you can cook.",
+      ai: "Write the name of a dish, and the AI will immediately tell you the required ingredients.",
+      learn: "Don't know how to cook? No problem! Learn to cook step-by-step with us.",
+      partner: "Connect with other cooks, ask for advice, and cook together!",
+      shopping: "Make a list before going to the store so you don't forget anything."
+    },
+    welcome: {
+      title: "Welcome to the Project!",
+      subtitle: "How can this program help you in the kitchen?",
+      f1_t: "Accurate Calculation", f1_d: "Accurately calculate cost and profit.",
+      f2_t: "Cook with What You Have", f2_d: "Find dishes from ingredients at home.",
+      f3_t: "Learn from Scratch", f3_d: "Learn through master classes.",
+      f4_t: "Find a Partner", f4_d: "Chat with other cooks.",
+      btn: "Got it, let's start!"
+    },
+    calc: {
+      title: "Calculator",
+      ingName: "Ingredient Name", ingPlaceholder: "E.g: Meat",
+      weight: "Weight (g/ml)",
+      price: "Price per 1 kg/liter",
+      addBtn: "Add",
+      pack: "Packaging cost", packPlaceholder: "E.g: 1500",
+      markup: "Markup (%)", markupPlaceholder: "E.g: 20",
+      saveBtn: "Save",
+      result: "Recommended price per portion:",
+      historyTitle: "Saved Menu",
+      historyEmpty: "No menus saved yet."
+    },
+    sugg: {
+      title: "What ingredients do you have?",
+      desc: "Type an ingredient name (e.g. meat, flour) to find matching dishes.",
+      placeholder: "Search ingredient...",
+      emptyTitle: "Unfortunately no dish found with this ingredient",
+      emptyDesc: "Try another ingredient"
+    },
+    ai: {
+      title: "Ask the AI Assistant",
+      desc: "What do you want to cook? Type a name or ingredients.",
+      placeholder: "E.g: Give me a diet chicken recipe...",
+      btn: "Ask",
+      loading: "AI is thinking...",
+      aiTitle: "AI Response",
+      stepsTitle: "Preparation steps:",
+      bottomText: "You got the ingredients, now calculate the cost!",
+      toCalc: "Go to Calculator"
+    },
+    learn: {
+      title: "Special masterclasses for you",
+      desc: "Select the dish you want to cook and let's start.",
+      btn: "Start learning",
+      completed: "Completed",
+      back: "Go back",
+      finishBtn: "I cooked it!"
+    },
+    partner: {
+      title: "Cooking Partners",
+      desc: "Cooking together is more fun! Who do you want to talk to?",
+      chatTitle: "chat with",
+      placeholder: "Write your message...",
+      send: "Send"
+    },
+    shop: {
+      title: "My Shopping List",
+      desc: "Don't forget the necessary products when you go to the market!",
+      placeholder: "Type a new product name...",
+      addBtn: "Add",
+      empty: "List is empty. Add something?"
+    },
+    footer: {
+      f1: "In your city", f2: "Love in every dish", f3: "Good food - happy day!",
+      text: "Your taste friend!"
+    }
+  }
+};
+
