@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChefHat, Check, Heart, MapPin, Utensils, ArrowRight, ArrowLeft, Star, Beef, Salad, Package, Sparkles, Search, Lightbulb, Bot, Loader2, BookOpen, Clock, Users, MessageCircle, CheckCircle, Send, ShoppingCart, CheckSquare, Square, Trash2, Plus } from 'lucide-react';
+import { ChefHat, Check, Heart, MapPin, Utensils, ArrowRight, ArrowLeft, Star, Beef, Salad, Package, Sparkles, Search, Lightbulb, Bot, Loader2, BookOpen, Clock, Users, MessageCircle, CheckCircle, Send, ShoppingCart, CheckSquare, Square, Trash2, Plus, Globe } from 'lucide-react';
 import './App.css';
 
 // Fake recipe database
@@ -42,7 +42,268 @@ const tutorialsDB = [
   }
 ];
 
+const translations = {
+  uz: {
+    nav: { calc: 'Kalkulyator', sug: 'Retsept qidiruv', ai: 'AI Yordamchi', learn: "O'rganamiz", partner: 'Sherik Topish', shop: 'Bozorlik' },
+    titles: {
+      calculator: "Taom Narxini Hisoblash",
+      suggester: "Boridan Pishiramiz",
+      ai: "Sun'iy Intelekt Yordamchisi",
+      learn: "Bosqichma-bosqich o'rganamiz",
+      partner: "Hamkorlikda pishiramiz",
+      shopping: "Bozorlik ro'yxati"
+    },
+    desc: {
+      calculator: "O'z mehnatingizni qadrlang. Aniq hisob — muvaffaqiyat garovi!",
+      suggester: "Uyda bor masalliqlarni yozing va qanday taomlar pishirish mumkinligini bilib oling.",
+      ai: "Taom nomini yozing va AI sizga qanday masalliqlar kerakligini darhol aytib beradi.",
+      learn: "Ovqat qilishni umuman bilmaysizmi? Muammo emas! Biz bilan qadam-ba-qadam pishirishni o'rganing.",
+      partner: "Boshqa pazandalar bilan bog'laning, maslahatlashing va birgalikda taom tayyorlang!",
+      shopping: "Hech narsa yoddan ko'tarilmasligi uchun do'konga borishdan oldin ro'yxat tuzing."
+    },
+    welcome: {
+      title: "{t.welcome.title}",
+      subtitle: "{t.welcome.subtitle}",
+      f1_t: "{t.welcome.f1_t}", f1_d: "{t.welcome.f1_d}",
+      f2_t: "{t.welcome.f2_t}", f2_d: "{t.welcome.f2_d}",
+      f3_t: "{t.welcome.f3_t}", f3_d: "{t.welcome.f3_d}",
+      f4_t: "{t.welcome.f4_t}", f4_d: "{t.welcome.f4_d}",
+      btn: "{t.welcome.btn}"
+    },
+    calc: {
+      title: "Kalkulyator",
+      ingName: "{t.calc.ingName}", ingPlaceholder: "{t.calc.ingPlaceholder}",
+      weight: "{t.calc.weight}",
+      price: "{t.calc.price}",
+      addBtn: "{t.calc.addBtn}",
+      pack: "{t.calc.pack}", packPlaceholder: "Masalan: 1500",
+      markup: "{t.calc.markup}", markupPlaceholder: "Masalan: 20",
+      saveBtn: "{t.calc.saveBtn}",
+      result: "{t.calc.result}",
+      historyTitle: "{t.calc.historyTitle}",
+      historyEmpty: "{t.calc.historyEmpty}"
+    },
+    sugg: {
+      title: "{t.sugg.title}",
+      desc: "{t.sugg.desc}",
+      placeholder: "{t.sugg.placeholder}",
+      emptyTitle: "{t.sugg.emptyTitle}",
+      emptyDesc: "{t.sugg.emptyDesc}"
+    },
+    ai: {
+      title: "{t.ai.title}",
+      desc: "{t.ai.desc}",
+      placeholder: "{t.ai.placeholder}",
+      btn: "So'rash",
+      loading: "{t.ai.loading}",
+      aiTitle: "{t.ai.aiTitle}",
+      stepsTitle: "{t.ai.stepsTitle}",
+      bottomText: "{t.ai.bottomText}",
+      toCalc: "{t.ai.toCalc}"
+    },
+    learn: {
+      title: "{t.learn.title}",
+      desc: "{t.learn.desc}",
+      btn: "{t.learn.btn}",
+      completed: "Tayyorlandi",
+      back: "{t.learn.back}",
+      finishBtn: "{t.learn.finishBtn}"
+    },
+    partner: {
+      title: "{t.partner.title}",
+      desc: "{t.partner.desc}",
+      chatTitle: "bilan suhbat",
+      placeholder: "{t.partner.placeholder}",
+      send: "{t.partner.send}"
+    },
+    shop: {
+      title: "{t.shop.title}",
+      desc: "{t.shop.desc}",
+      placeholder: "{t.shop.placeholder}",
+      addBtn: "{t.calc.addBtn}",
+      empty: "{t.shop.empty}"
+    },
+    footer: {
+      f1: "{t.footer.f1}", f2: "{t.footer.f2}", f3: "{t.footer.f3}",
+      text: "{t.footer.text}"
+    }
+  },
+  ru: {
+    nav: { calc: 'Калькулятор', sug: 'Поиск рецепта', ai: 'ИИ Помощник', learn: 'Обучение', partner: 'Напарники', shop: 'Покупки' },
+    titles: {
+      calculator: "Расчет стоимости блюда",
+      suggester: "Готовим из того, что есть",
+      ai: "ИИ Помощник по кухне",
+      learn: "Учимся готовить шаг за шагом",
+      partner: "Готовим вместе",
+      shopping: "Список покупок"
+    },
+    desc: {
+      calculator: "Цените свой труд. Точный расчет — залог успеха!",
+      suggester: "Напишите, что есть дома, и узнайте, какие блюда можно приготовить.",
+      ai: "Напишите название блюда, и ИИ сразу скажет, какие ингредиенты нужны.",
+      learn: "Совсем не умеете готовить? Не проблема! Учитесь готовить шаг за шагом вместе с нами.",
+      partner: "Связывайтесь с другими поварами, советуйтесь и готовьте вместе!",
+      shopping: "Составьте список перед походом в магазин, чтобы ничего не забыть."
+    },
+    welcome: {
+      title: "Добро пожаловать в проект!",
+      subtitle: "Как эта программа может помочь вам на кухне?",
+      f1_t: "Точный расчет", f1_d: "Точно рассчитайте себестоимость и прибыль.",
+      f2_t: "Готовим из того, что есть", f2_d: "Найдите блюда из ингредиентов дома.",
+      f3_t: "Обучение с нуля", f3_d: "Учитесь через мастер-классы.",
+      f4_t: "Найти напарника", f4_d: "Общайтесь с другими поварами.",
+      btn: "Понятно, начнем!"
+    },
+    calc: {
+      title: "Калькулятор",
+      ingName: "Название ингредиента", ingPlaceholder: "Например: Мясо",
+      weight: "Вес (г/мл)",
+      price: "Цена за 1 кг/литр (сум)",
+      addBtn: "Добавить",
+      pack: "Стоимость упаковки (сум)", packPlaceholder: "Например: 1500",
+      markup: "Наценка (%)", markupPlaceholder: "Например: 20",
+      saveBtn: "Сохранить",
+      result: "Рекомендуемая цена за порцию:",
+      historyTitle: "Сохраненное меню",
+      historyEmpty: "Меню пока не сохранено."
+    },
+    sugg: {
+      title: "Какие продукты есть дома?",
+      desc: "Напишите название продукта (например: мясо, мука) и найдите подходящие блюда.",
+      placeholder: "Поиск ингредиентов...",
+      emptyTitle: "К сожалению, блюдо с таким ингредиентом не найдено",
+      emptyDesc: "Попробуйте ввести другой ингредиент"
+    },
+    ai: {
+      title: "Напишите ИИ помощнику",
+      desc: "Какое блюдо хотите приготовить? Напишите название или ингредиенты.",
+      placeholder: "Например: Дайте мне рецепт диетического блюда из курицы...",
+      btn: "Спросить",
+      loading: "ИИ думает...",
+      aiTitle: "Ответ ИИ",
+      stepsTitle: "Этапы приготовления:",
+      bottomText: "Узнали ингредиенты, теперь рассчитайте цену!",
+      toCalc: "Перейти к калькулятору"
+    },
+    learn: {
+      title: "Специальные мастер-классы для вас",
+      desc: "Выберите блюдо, которое хотите приготовить, и начнем процесс.",
+      btn: "Начать обучение",
+      completed: "Готово",
+      back: "Вернуться назад",
+      finishBtn: "Я приготовил!"
+    },
+    partner: {
+      title: "Напарники по кухне",
+      desc: "Готовить вместе веселее! С кем хотите пообщаться?",
+      chatTitle: "беседа с",
+      placeholder: "Напишите ваше сообщение...",
+      send: "Отправить"
+    },
+    shop: {
+      title: "Мои покупки",
+      desc: "Не забудьте нужные продукты при походе на рынок!",
+      placeholder: "Напишите название нового продукта...",
+      addBtn: "Добавить",
+      empty: "Список пуст. Добавить что-нибудь?"
+    },
+    footer: {
+      f1: "В вашем городе", f2: "В каждом блюде есть любовь", f3: "Хорошая еда - счастливый день!",
+      text: "Ваш вкусовой друг!"
+    }
+  },
+  en: {
+    nav: { calc: 'Calculator', sug: 'Recipe Search', ai: 'AI Assistant', learn: 'Learning', partner: 'Find Partner', shop: 'Shopping' },
+    titles: {
+      calculator: "Calculate Dish Cost",
+      suggester: "Cook with What You Have",
+      ai: "AI Kitchen Assistant",
+      learn: "Step-by-Step Learning",
+      partner: "Cook Together",
+      shopping: "Shopping List"
+    },
+    desc: {
+      calculator: "Value your work. Accurate calculation is the key to success!",
+      suggester: "Write down what ingredients you have at home to see what you can cook.",
+      ai: "Write the name of a dish, and the AI will immediately tell you the required ingredients.",
+      learn: "Don't know how to cook? No problem! Learn to cook step-by-step with us.",
+      partner: "Connect with other cooks, ask for advice, and cook together!",
+      shopping: "Make a list before going to the store so you don't forget anything."
+    },
+    welcome: {
+      title: "Welcome to the Project!",
+      subtitle: "How can this program help you in the kitchen?",
+      f1_t: "Accurate Calculation", f1_d: "Accurately calculate cost and profit.",
+      f2_t: "Cook with What You Have", f2_d: "Find dishes from ingredients at home.",
+      f3_t: "Learn from Scratch", f3_d: "Learn through master classes.",
+      f4_t: "Find a Partner", f4_d: "Chat with other cooks.",
+      btn: "Got it, let's start!"
+    },
+    calc: {
+      title: "Calculator",
+      ingName: "Ingredient Name", ingPlaceholder: "E.g: Meat",
+      weight: "Weight (g/ml)",
+      price: "Price per 1 kg/liter",
+      addBtn: "Add",
+      pack: "Packaging cost", packPlaceholder: "E.g: 1500",
+      markup: "Markup (%)", markupPlaceholder: "E.g: 20",
+      saveBtn: "Save",
+      result: "Recommended price per portion:",
+      historyTitle: "Saved Menu",
+      historyEmpty: "No menus saved yet."
+    },
+    sugg: {
+      title: "What ingredients do you have?",
+      desc: "Type an ingredient name (e.g. meat, flour) to find matching dishes.",
+      placeholder: "Search ingredient...",
+      emptyTitle: "Unfortunately no dish found with this ingredient",
+      emptyDesc: "Try another ingredient"
+    },
+    ai: {
+      title: "Ask the AI Assistant",
+      desc: "What do you want to cook? Type a name or ingredients.",
+      placeholder: "E.g: Give me a diet chicken recipe...",
+      btn: "Ask",
+      loading: "AI is thinking...",
+      aiTitle: "AI Response",
+      stepsTitle: "Preparation steps:",
+      bottomText: "You got the ingredients, now calculate the cost!",
+      toCalc: "Go to Calculator"
+    },
+    learn: {
+      title: "Special masterclasses for you",
+      desc: "Select the dish you want to cook and let's start.",
+      btn: "Start learning",
+      completed: "Completed",
+      back: "Go back",
+      finishBtn: "I cooked it!"
+    },
+    partner: {
+      title: "Cooking Partners",
+      desc: "Cooking together is more fun! Who do you want to talk to?",
+      chatTitle: "chat with",
+      placeholder: "Write your message...",
+      send: "Send"
+    },
+    shop: {
+      title: "My Shopping List",
+      desc: "Don't forget the necessary products when you go to the market!",
+      placeholder: "Type a new product name...",
+      addBtn: "Add",
+      empty: "List is empty. Add something?"
+    },
+    footer: {
+      f1: "In your city", f2: "Love in every dish", f3: "Good food - happy day!",
+      text: "Your taste friend!"
+    }
+  }
+};
+
 function App() {
+  const [lang, setLang] = useState('uz');
+  const t = translations[lang];
+
   const [loading, setLoading] = useState(true);
   const [showWelcome, setShowWelcome] = useState(true);
   const [activeTab, setActiveTab] = useState('calculator'); // 'calculator', 'suggester', 'ai', 'stats', 'learn'
@@ -165,7 +426,7 @@ function App() {
     
     // Simulate partner reply
     setTimeout(() => {
-      setChatMessages(prev => [...prev, { text: "Ajoyib fikr! Men ham shuni pishirmoqchi edim 😊", isMe: false }]);
+      setChatMessages(prev => [...prev, { text: "Ajoyib fikr! Men ham shuni pishirmoqchi edim рџЉ", isMe: false }]);
     }, 1500);
   };
 
@@ -185,26 +446,49 @@ function App() {
     return recipe.ingredients.some(ing => ing.toLowerCase().includes(query)) || recipe.name.toLowerCase().includes(query);
   });
 
-  const handleAiSubmit = () => {
-    if (!aiQuery.trim()) return;
+  const handleAiSubmit = (overrideQuery) => {
+    const q = overrideQuery || aiQuery;
+    if (!q.trim()) return;
+    
+    if (overrideQuery) setAiQuery(overrideQuery);
     setIsAiThinking(true);
     setAiResponse(null);
     
     setTimeout(() => {
-      const query = aiQuery.toLowerCase();
+      const query = q.toLowerCase();
       const foundRecipe = recipesDB.find(r => r.name.toLowerCase().includes(query) || query.includes(r.name.toLowerCase()));
       
       if (foundRecipe) {
         setAiResponse({
           dish: foundRecipe.name,
-          text: "Ajoyib tanlov! Ushbu taomni o'z me'yorida va mazali tayyorlash uchun quyidagi masalliqlar kerak bo'ladi:",
-          ingredients: foundRecipe.ingredients
+          text: `Qoyilmaqom tanlov! Men sizga ${foundRecipe.name} taomini 0 dan boshlab tayyorlashni o'rgataman. Mana aniq grammlardagi masalliqlar va qadam-ba-qadam jarayon:`,
+          ingredients: [
+            ...foundRecipe.ingredients.map(i => `${i.charAt(0).toUpperCase() + i.slice(1)} - 200g (yoki ta'bga ko'ra)`),
+            "Maxsus sous/ziravor - 20g"
+          ],
+          steps: [
+            "1. Barcha masalliqlarni tozalab, kerakli shaklda (somoncha yoki kubik qilib) to'g'rab oling.",
+            "2. Qizdirilgan tovaga yog' solib, go'sht va boshqa masalliqlarni asta-sekin qovuring.",
+            "3. O'z me'yorida tuz va ziravorlar qo'shing. Olovni pastlab pishiring.",
+            "4. Dasturxonga tortishdan oldin chiroyli qilib bezating! Yoqimli ishtaha!"
+          ]
         });
       } else {
         setAiResponse({
-          dish: aiQuery,
-          text: "Bu juda qiziqarli taom! Odatda klassik tayyorlanishda quyidagi asosiy masalliqlar ishlatiladi:",
-          ingredients: ["Go'sht yoki Asosiy mahsulot", "Yog' (O'simlik yoki Sariyog')", "Piyoz va Sarimsoq", "Maxsus ziravorlar va tuz"]
+          dish: q,
+          text: `Ushbu "${q}" taomini tayyorlash uchun klassik retsept (0 dan o'rganish uchun):`,
+          ingredients: [
+            "Go'sht yoki asosiy mahsulot - 400g", 
+            "Yog' (O'simlik/Sariyog') - 50g", 
+            "Piyoz va Sarimsoq - 150g", 
+            "Maxsus ziravorlar va tuz - 15g"
+          ],
+          steps: [
+            "1. Masalliqlarni yuvib, bir xil kattalikda to'g'rang.",
+            "2. Qozonga 50g yog' solib qizdiring va piyozni qizartirib qovuring.",
+            "3. 400g asosiy mahsulotni qo'shing va baland olovda aylantiring.",
+            "4. 15g ziravor qo'shib, biroz suv quyib dimlab qo'ying. 30 daqiqa kuting."
+          ]
         });
       }
       setIsAiThinking(false);
@@ -277,43 +561,43 @@ function App() {
             >
               <div className="w-header">
                 <ChefHat size={48} color="var(--primary-main)" />
-                <h2>Uy Oshpazi loyihasiga xush kelibsiz!</h2>
-                <p>Ushbu dastur sizga oshxonada qanday yordam bera oladi?</p>
+                <h2>{t.welcome.title}</h2>
+                <p>{t.welcome.subtitle}</p>
               </div>
 
               <div className="w-features-grid">
                 <div className="w-feature">
                   <div className="w-icon"><Utensils size={24}/></div>
                   <div>
-                    <h4>Aniq hisob-kitob</h4>
-                    <p>Tannarx va foydani aniq hisoblang.</p>
+                    <h4>{t.welcome.f1_t}</h4>
+                    <p>{t.welcome.f1_d}</p>
                   </div>
                 </div>
                 <div className="w-feature">
                   <div className="w-icon" style={{color: '#f59e0b'}}><Search size={24}/></div>
                   <div>
-                    <h4>Boridan pishiramiz</h4>
-                    <p>Uydagi masalliqlardan taom toping.</p>
+                    <h4>{t.welcome.f2_t}</h4>
+                    <p>{t.welcome.f2_d}</p>
                   </div>
                 </div>
                 <div className="w-feature">
                   <div className="w-icon" style={{color: '#3b82f6'}}><BookOpen size={24}/></div>
                   <div>
-                    <h4>Noldan o'rganish</h4>
-                    <p>Master-klasslar orqali o'rganing.</p>
+                    <h4>{t.welcome.f3_t}</h4>
+                    <p>{t.welcome.f3_d}</p>
                   </div>
                 </div>
                 <div className="w-feature">
                   <div className="w-icon" style={{color: '#8b5cf6'}}><Users size={24}/></div>
                   <div>
-                    <h4>Sherik topish</h4>
-                    <p>Oshpazlar bilan suhbat quring.</p>
+                    <h4>{t.welcome.f4_t}</h4>
+                    <p>{t.welcome.f4_d}</p>
                   </div>
                 </div>
               </div>
 
               <button className="btn-welcome" onClick={() => setShowWelcome(false)}>
-                Tushunarli, boshladik! <ArrowRight size={18}/>
+                {t.welcome.btn} <ArrowRight size={18}/>
               </button>
             </motion.div>
           </motion.div>
@@ -326,44 +610,58 @@ function App() {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6, type: "spring" }}
     >
-      
+      <div className="header-nav" style={{display: 'flex', justifyContent: 'flex-end', padding: '1rem 2rem', background: 'transparent', width: '100%'}}>
+        <div className="language-selector" style={{display: 'flex', gap: '0.5rem', alignItems: 'center', background: 'white', padding: '0.5rem 1rem', borderRadius: '100px', boxShadow: 'var(--glass-shadow)'}}>
+          <Globe size={18} color="var(--primary-main)" />
+          <select 
+            value={lang} 
+            onChange={(e) => setLang(e.target.value)}
+            style={{border: 'none', background: 'transparent', outline: 'none', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 700, color: 'var(--primary-dark)', fontSize: '0.95rem'}}
+          >
+            <option value="uz">O'zbekcha</option>
+            <option value="ru">Р СѓСЃСЃРєРёР№</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+      </div>
+
       {/* Navigation Tabs */}
       <div className="nav-tabs">
         <div 
           className={`nav-tab ${activeTab === 'calculator' ? 'active' : ''}`}
           onClick={() => setActiveTab('calculator')}
         >
-          <Sparkles size={18} /> Kalkulyator
+          <Sparkles size={18} /> {t.nav.calc}
         </div>
         <div 
           className={`nav-tab ${activeTab === 'suggester' ? 'active' : ''}`}
           onClick={() => setActiveTab('suggester')}
         >
-          <Lightbulb size={18} /> Retsept
+          <Lightbulb size={18} /> {t.nav.sug}
         </div>
         <div 
           className={`nav-tab ${activeTab === 'ai' ? 'active' : ''}`}
           onClick={() => setActiveTab('ai')}
         >
-          <Bot size={18} /> AI Yordamchi
+          <Bot size={18} /> {t.nav.ai}
         </div>
         <div 
           className={`nav-tab ${activeTab === 'learn' ? 'active' : ''}`}
           onClick={() => {setActiveTab('learn'); setSelectedTutorial(null);}}
         >
-          <BookOpen size={18} /> O'rganamiz
+          <BookOpen size={18} /> {t.nav.learn}
         </div>
         <div 
           className={`nav-tab ${activeTab === 'partner' ? 'active' : ''}`}
           onClick={() => {setActiveTab('partner'); setActivePartner(null);}}
         >
-          <Users size={18} /> Sherik Topish
+          <Users size={18} /> {t.nav.partner}
         </div>
         <div 
           className={`nav-tab ${activeTab === 'shopping' ? 'active' : ''}`}
           onClick={() => setActiveTab('shopping')}
         >
-          <ShoppingCart size={18} /> Bozorlik
+          <ShoppingCart size={18} /> {t.nav.shop}
         </div>
       </div>
 
@@ -383,20 +681,10 @@ function App() {
           
           <motion.div className="banner-text" initial={{y:30, opacity:0}} animate={{y:0, opacity:1}} transition={{delay: 0.5}}>
             <h1>
-              {activeTab === 'calculator' && "Uyg'unlashgan hisob-kitoblar"}
-              {activeTab === 'suggester' && "Nima pishiramiz?"}
-              {activeTab === 'ai' && "Sun'iy Intelekt Yordamchisi"}
-              {activeTab === 'learn' && "Bosqichma-bosqich o'rganamiz"}
-              {activeTab === 'partner' && "Hamkorlikda pishiramiz"}
-              {activeTab === 'shopping' && "Bozorlik ro'yxati"}
+              {t.titles[activeTab]}
             </h1>
             <p>
-              {activeTab === 'calculator' && "O'z mehnatingizni qadrlang. Aniq hisob — muvaffaqiyat garovi!"}
-              {activeTab === 'suggester' && "Uyda bor masalliqlarni yozing va qanday taomlar pishirish mumkinligini bilib oling."}
-              {activeTab === 'ai' && "Taom nomini yozing va AI sizga qanday masalliqlar kerakligini darhol aytib beradi."}
-              {activeTab === 'learn' && "Ovqat qilishni umuman bilmaysizmi? Muammo emas! Biz bilan qadam-ba-qadam pishirishni o'rganing."}
-              {activeTab === 'partner' && "Boshqa pazandalar bilan bog'laning, maslahatlashing va birgalikda taom tayyorlang!"}
-              {activeTab === 'shopping' && "Hech narsa yoddan ko'tarilmasligi uchun do'konga borishdan oldin ro'yxat tuzing."}
+              {t.desc[activeTab]}
             </p>
             <div className="features-row">
               <div className="feature-pill"><div className="check"><Check size={14}/></div> Sifatli mahsulot</div>
@@ -507,7 +795,7 @@ function App() {
               </div>
               
               <div className="param-group">
-                <label><Check size={16} color="var(--primary-main)"/> Ustama foyda (%)</label>
+                <label><Check size={16} color="var(--primary-main)"/> {t.calc.markup}</label>
                 <input 
                   type="number" 
                   placeholder="Masalan: 20"
@@ -523,7 +811,7 @@ function App() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Saqlab qo'yish <ArrowRight size={18} />
+                {t.calc.saveBtn} <ArrowRight size={18} />
               </motion.button>
 
               <AnimatePresence>
@@ -533,7 +821,7 @@ function App() {
                     initial={{opacity: 0, y: 20}}
                     animate={{opacity: 1, y: 0}}
                   >
-                    <span>1 porsiya tavsiya narxi:</span>
+                    <span>{t.calc.result}</span>
                     <strong>{formatCurrency(results.sellingPricePerPortion)} so'm</strong>
                   </motion.div>
                 )}
@@ -549,14 +837,14 @@ function App() {
             exit={{ opacity: 0, x: -20 }}
           >
             <div className="search-box">
-              <h2 style={{color: 'var(--primary-dark)', fontSize: '2rem', marginBottom: '0.5rem'}}>Uyda nima mahsulotlaringiz bor?</h2>
-              <p style={{color: 'var(--text-gray)'}}>Mahsulot nomini yozing (masalan: go'sht, un, pomidor) va mos keluvchi taomlarni toping.</p>
+              <h2 style={{color: 'var(--primary-dark)', fontSize: '2rem', marginBottom: '0.5rem'}}>{t.sugg.title}</h2>
+              <p style={{color: 'var(--text-gray)'}}>{t.sugg.desc}</p>
               
               <div className="search-input-wrapper">
                 <Search color="var(--text-gray)" size={24} />
                 <input 
                   type="text" 
-                  placeholder="Masalliq qidirish..." 
+                  placeholder="{t.sugg.placeholder}" 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -566,7 +854,15 @@ function App() {
             <div className="recipe-cards-grid">
               {filteredRecipes.length > 0 ? (
                 filteredRecipes.map(recipe => (
-                  <div key={recipe.id} className="recipe-card-sugg">
+                  <div 
+                    key={recipe.id} 
+                    className="recipe-card-sugg" 
+                    style={{cursor: 'pointer'}}
+                    onClick={() => {
+                      setActiveTab('ai');
+                      handleAiSubmit(recipe.name);
+                    }}
+                  >
                     <div className="rc-icon">
                       {recipe.icon}
                     </div>
@@ -582,8 +878,8 @@ function App() {
               ) : (
                 <div style={{gridColumn: '1 / -1', textAlign: 'center', padding: '3rem', color: 'var(--text-gray)'}}>
                   <Search size={48} opacity={0.2} style={{margin: '0 auto 1rem auto'}} />
-                  <h3>Afsuski bunday masalliq bilan taom topilmadi</h3>
-                  <p>Boshqa masalliq kiritib ko'ring</p>
+                  <h3>{t.sugg.emptyTitle}</h3>
+                  <p>{t.sugg.emptyDesc}</p>
                 </div>
               )}
             </div>
@@ -647,7 +943,7 @@ function App() {
                   }}
                 >
                   <div style={{position: 'absolute', top: '-15px', left: '30px', background: 'var(--primary-main)', color: 'white', padding: '0.5rem 1.5rem', borderRadius: '100px', fontWeight: 700, fontSize: '0.9rem'}}>
-                    AI Javobi
+                    {t.ai.aiTitle}
                   </div>
                   <h3 style={{fontSize: '1.5rem', color: 'var(--primary-dark)', marginBottom: '1rem', marginTop: '0.5rem', textTransform: 'capitalize'}}>
                     {aiResponse.dish}
@@ -664,14 +960,27 @@ function App() {
                       </span>
                     ))}
                   </div>
+
+                  {aiResponse.steps && (
+                    <div className="ai-steps-container" style={{marginTop: '2rem', textAlign: 'left'}}>
+                      <h4 style={{color: 'var(--primary-dark)', marginBottom: '1rem', fontSize: '1.2rem'}}>{t.ai.stepsTitle}</h4>
+                      <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+                        {aiResponse.steps.map((step, idx) => (
+                          <div key={idx} style={{background: 'rgba(255,255,255,0.9)', padding: '1rem', borderRadius: '12px', color: 'var(--text-dark)', fontSize: '1rem', borderLeft: '4px solid var(--primary-main)'}}>
+                            {step}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                   
                   <div style={{marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px dashed rgba(255,255,255,0.5)', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                    <span style={{color: 'var(--text-dark)', fontSize: '0.9rem'}}>Masalliqlarni bilib oldingiz, endi narxini hisoblang!</span>
+                    <span style={{color: 'var(--text-dark)', fontSize: '0.9rem'}}>{t.ai.bottomText}</span>
                     <button 
                       onClick={() => setActiveTab('calculator')}
                       style={{background: 'none', border: 'none', color: 'var(--primary-dark)', fontWeight: 800, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem'}}
                     >
-                      Kalkulyatorga o'tish <ArrowRight size={16}/>
+                      {t.ai.toCalc} <ArrowRight size={16}/>
                     </button>
                   </div>
                 </motion.div>
@@ -689,8 +998,8 @@ function App() {
             {!activePartner ? (
               <>
                 <div className="stats-header" style={{textAlign: 'center', marginBottom: '3rem'}}>
-                  <h2 style={{color: 'var(--primary-dark)', fontSize: '2rem'}}>Pazanda Sheriklar</h2>
-                  <p style={{color: 'var(--text-gray)'}}>Birgalikda ovqat pishirish qiziqarliroq! Kim bilan gaplashmoqchisiz?</p>
+                  <h2 style={{color: 'var(--primary-dark)', fontSize: '2rem'}}>{t.partner.title}</h2>
+                  <p style={{color: 'var(--text-gray)'}}>{t.partner.desc}</p>
                 </div>
                 
                 <div className="partners-list">
@@ -850,7 +1159,7 @@ function App() {
                       style={{background: '#10b981'}}
                       onClick={() => finishTutorial(selectedTutorial.id)}
                     >
-                      <CheckCircle size={18}/> Tayyorladim!
+                      <CheckCircle size={18}/> {t.learn.finishBtn}
                     </button>
                   ) : (
                     <button 
@@ -873,15 +1182,15 @@ function App() {
             exit={{ opacity: 0, x: -20 }}
           >
             <div className="stats-header" style={{textAlign: 'center', marginBottom: '3rem'}}>
-              <h2 style={{color: 'var(--primary-dark)', fontSize: '2rem'}}>Mening xaridlarim</h2>
-              <p style={{color: 'var(--text-gray)'}}>Bozorga chiqqanda kerakli mahsulotlarni unutmang!</p>
+              <h2 style={{color: 'var(--primary-dark)', fontSize: '2rem'}}>{t.shop.title}</h2>
+              <p style={{color: 'var(--text-gray)'}}>{t.shop.desc}</p>
             </div>
             
             <div className="shopping-container">
               <div className="shopping-input-row">
                 <input 
                   type="text" 
-                  placeholder="Yangi mahsulot nomini yozing..." 
+                  placeholder="{t.shop.placeholder}" 
                   value={newItemText}
                   onChange={(e) => setNewItemText(e.target.value)}
                   onKeyPress={(e) => {
@@ -899,7 +1208,7 @@ function App() {
                     }
                   }}
                 >
-                  <Plus size={20} /> Qo'shish
+                  <Plus size={20} /> {t.calc.addBtn}
                 </button>
               </div>
 
@@ -907,7 +1216,7 @@ function App() {
                 <AnimatePresence>
                   {shoppingList.length === 0 ? (
                     <motion.div style={{textAlign: 'center', padding: '2rem', color: 'var(--text-gray)'}}>
-                      Ro'yxat bo'sh. Nimadir qo'shasizmi?
+                      {t.shop.empty}
                     </motion.div>
                   ) : (
                     shoppingList.map(item => (
@@ -1004,17 +1313,17 @@ function App() {
       >
         <div className="footer-items">
           <div className="f-item">
-            <div className="f-icon"><MapPin size={18}/></div> O'z shahringizda
+            <div className="f-icon"><MapPin size={18}/></div> {t.footer.f1}
           </div>
           <div className="f-item">
-            <div className="f-icon"><Heart size={18}/></div> Har bir taomda mehr bor
+            <div className="f-icon"><Heart size={18}/></div> {t.footer.f2}
           </div>
           <div className="f-item">
-            <div className="f-icon"><Star size={18}/></div> Yaxshi taom - baxtli kun!
+            <div className="f-icon"><Star size={18}/></div> {t.footer.f3}
           </div>
         </div>
         <div className="handwritten">
-          Uy oshpazi - sizning ta'm do'stingiz!
+          {t.footer.text}
         </div>
       </motion.div>
     </motion.div>
@@ -1023,3 +1332,4 @@ function App() {
 }
 
 export default App;
+
